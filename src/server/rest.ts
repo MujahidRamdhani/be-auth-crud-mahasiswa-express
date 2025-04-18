@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morganMiddleware from '$middlewares/morganMiddleware';
 import authRoutes from '$routes/AuthRoute';
+import mahasiswaRoute from '$routes/MahasiswaRoute';
 
 export default function createRestServer() {
   let allowedOrigins: string[] = ['http://localhost:3000'];
@@ -19,6 +20,7 @@ export default function createRestServer() {
   app.use(morganMiddleware);
   app.use(express.json());
   app.use('/api', authRoutes);
+  app.use('/api', mahasiswaRoute);
 
   return app;
 }

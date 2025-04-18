@@ -1,0 +1,27 @@
+###
+curl -X POST  "http://localhost:3150/api/register"
+-H "Content-Type: application/json" \
+-d '{"namaLengkap": "ahmad mujahid", "email": "user@gmail.com", "password": "secret"}'
+
+###
+curl -X POST  "http://localhost:3150/api/login"
+-H "Content-Type: application/json" \
+-d '{"email": "user@gmail.com", "password": "secret"}'
+
+###
+curl -X GET "http://localhost:3150/api/mahasiswa/getBYNama/Adams Ava"
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OTMxY2U3LTNjNTItNGYzNy05NmU2LWQ0NDBmYTM2ZGFjOCIsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJpYXQiOjE3NDQ5Njg1NDIsImV4cCI6MTc0NDk2OTQ0Mn0.DqFt2IVF9W3SR66TG0nnVu-bCGeX0K1DEiHQfdTCU48" 
+-H "Content-Type: application/json" \
+
+###
+curl -X GET "http://localhost:3150/api/mahasiswa/getBYNIM/0197485623"
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OTMxY2U3LTNjNTItNGYzNy05NmU2LWQ0NDBmYTM2ZGFjOCIsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJpYXQiOjE3NDQ5Njg1NDIsImV4cCI6MTc0NDk2OTQ0Mn0.DqFt2IVF9W3SR66TG0nnVu-bCGeX0K1DEiHQfdTCU48" 
+-H "Content-Type: application/json" \
+
+###
+curl -X GET "http://localhost:3150/api/mahasiswa/getByYMD/20231122"
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OTMxY2U3LTNjNTItNGYzNy05NmU2LWQ0NDBmYTM2ZGFjOCIsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJpYXQiOjE3NDQ5Njg1NDIsImV4cCI6MTc0NDk2OTQ0Mn0.DqFt2IVF9W3SR66TG0nnVu-bCGeX0K1DEiHQfdTCU48" 
+-H "Content-Type: application/json" \
+
+
+

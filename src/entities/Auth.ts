@@ -1,4 +1,4 @@
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 
 export interface UserLoginDTO {
   email: string;
@@ -23,7 +23,6 @@ export interface UserResponse {
   createAt: Date;
   updateAt: Date;
 }
-
 
 export function exclude<User, Key extends keyof User>(user: User, ...keys: Key[]): Omit<User, Key> {
   for (let key of keys) {

@@ -1,5 +1,4 @@
 import { UserRegisterDTO, UserResponse } from '$entities/Auth';
-import { User } from '@prisma/client';
 import { prisma } from '../utils/prisma.utils';
 
 async function create(user: UserRegisterDTO) {

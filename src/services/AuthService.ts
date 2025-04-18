@@ -3,7 +3,7 @@ import { INTERNAL_SERVER_ERROR_SERVICE_RESPONSE, ServiceResponse } from '../enti
 import Logger from '$pkg/logger';
 import { createAccessToken } from '$utils/jwt.utils';
 import { hashPassword } from '$utils/password.utils';
-import authRepository from 'repositores/AuthRepository';
+import authRepository from '../repositores/AuthRepository';
 import { UserLoginDTO, UserRegisterDTO } from '$entities/Auth';
 
 async function register(userData: UserRegisterDTO): Promise<ServiceResponse<{}>> {
@@ -51,7 +51,7 @@ async function login(userData: UserLoginDTO): Promise<ServiceResponse<{ token: s
     if (!user) {
       return {
         status: false,
-        err: { message: 'Invalid email or password', code: 401 },
+        err: { message: 'Email atau password salah', code: 401 },
       };
     }
 
@@ -59,7 +59,7 @@ async function login(userData: UserLoginDTO): Promise<ServiceResponse<{ token: s
     if (!isMatch) {
       return {
         status: false,
-        err: { message: 'Invalid email or password', code: 401 },
+        err: { message: 'Email atau password salah', code: 401 },
       };
     }
 
@@ -68,7 +68,7 @@ async function login(userData: UserLoginDTO): Promise<ServiceResponse<{ token: s
       email: user.email,
     });
 
-    const { password: _password, createdAt, updatedAt, ...userWithoutPassword } = user;
+    const { password: _password, createAt, updateAt, ...userWithoutPassword } = user;
 
     const result = {
       status: true,

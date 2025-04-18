@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import Logger from '../pkg/logger';
+import { prisma } from './prisma.utils';
 
 const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || 'ACCESS_SECRET';
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'REFRESH_SECRET';
@@ -42,17 +43,29 @@ export function verifyRefreshToken(refreshToken: string): UserPayload | null {
   }
 }
 
-export function authenticate(req: Request, res: Response, next: NextFunction): void {
+export async function authenticate(req: Request, res: Response, next: NextFunction): Promise<void> {
   const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
-    res.status(401).json({ message: 'No token provided' });
+    res.status(401).json({ message: 'Token tidak ditemukan' });
     return;
   }
 
   const user = verifyAccessToken(token);
+
   if (!user) {
-    res.status(401).json({ message: 'Invalid token' });
+    res.status(401).json({ message: 'Token tidak valid' });
+    return;
+  }
+
+  const blokirToken = await prisma.blokirToken.findFirst({
+    where: {
+      token: token,
+    },
+  });
+
+  if (blokirToken) {
+    res.status(401).json({ message: 'Token telah diblokir' });
     return;
   }
 

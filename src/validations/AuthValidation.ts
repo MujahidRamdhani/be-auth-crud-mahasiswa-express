@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
 const registerValidation = Joi.object({
-  fullName: Joi.string().max(200).required(),
+  namaLengkap: Joi.string().max(200).required(),
   email: Joi.string().email().max(200).required(),
   password: Joi.string().max(200).required(),
 });
