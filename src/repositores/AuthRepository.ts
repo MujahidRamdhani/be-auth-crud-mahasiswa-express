@@ -1,4 +1,5 @@
-import { UserRegisterDTO } from '$entities/Auth';
+import { UserRegisterDTO, UserResponse } from '$entities/Auth';
+import { User } from '@prisma/client';
 import { prisma } from '../utils/prisma.utils';
 
 async function create(user: UserRegisterDTO) {
@@ -6,8 +7,8 @@ async function create(user: UserRegisterDTO) {
   return result;
 }
 
-async function getByEmail(email: string): Promise<any> {
-  const result = prisma.user.findUnique({ where: { email } });
+async function getByEmail(email: string): Promise<UserResponse | null> {
+  const result = await prisma.user.findUnique({ where: { email } });
   return result;
 }
 

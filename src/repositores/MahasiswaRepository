@@ -1,0 +1,8 @@
+
+
+
+
+async function getByNama(nama : string) Promise<any> {
+    const result = prisma.mahasiswa.findUnique({ where: { NAMA } });
+    return result;
+}
