@@ -1,6 +1,7 @@
+import { UserRegisterDTO } from '$entities/Auth';
 import { prisma } from '../utils/prisma.utils';
 
-async function create(user: any) {
+async function create(user: UserRegisterDTO) {
   const result = await prisma.user.create({ data: user });
   return result;
 }
