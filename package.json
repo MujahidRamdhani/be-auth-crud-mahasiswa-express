@@ -8,7 +8,8 @@
     "start": "npm run build && node dist/index.js",
     "dev": "nodemon ./src/index.ts",
     "build": "rimraf ./dist && tsc",
-    "seed": "ts-node prisma/seeds/index.ts"
+    "seed": "ts-node prisma/seeds/index.ts",
+    "format": "prettier --write '**/*.{js,ts}'"
   },
   "author": "mujahidramdhani",
   "license": "MIT",

@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 
 /**
- * 
- * @param schema 
+ *
+ * @param schema
  * @param property
  */
 const validate =
@@ -27,7 +27,7 @@ const validate =
       });
     }
 
-    req[property] = value; 
+    req[property] = value;
     next();
   };
 
